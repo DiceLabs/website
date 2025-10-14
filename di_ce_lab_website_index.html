@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DiCE Research Lab — SDSU</title>
+    <meta name="description" content="Data-informed Construction Engineering (DiCE) at SDSU. Construction & Civil Engineering research in Robotics, AI, and Data Analytics." />
+    <link rel="icon" href="/assets/favicon.png" />
+    <style>
+        /* --- theme variables --- */
+        :root {
+            --red: #A6192E;
+            --red-bright: #D41736;
+            --black: #000000;
+            --ink: #0B0B0C;
+            --muted: #B8BDC5;
+            --text: #F3F4F6;
+            --panel: #111113;
+            --border: #29292B;
+            --chip: #161618;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg,var(--ink),#0a0a0b 60%, #09090a);
+            color: var(--text);
+            font: 16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial
+        }
+
+        a {
+            color: var(--red-bright);
+            text-decoration: none
+        }
+
+            a:hover {
+                text-decoration: underline
+            }
+
+        .container {
+            max-width: 1200px;
+            margin-inline: auto;
+            padding: 0 20px
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 60;
+            background: rgba(0,0,0,.82);
+            backdrop-filter: saturate(150%) blur(10px);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: conic-gradient(from 210deg at 50% 50%, var(--red) 0 40%, #7c1222 40% 60%, var(--black) 60% 100%);
+            box-shadow: 0 0 0 2px rgba(255,255,255,.06) inset
+        }
+
+        .brand h1 {
+            margin: 0;
+            font-size: 18px;
+            letter-spacing: .6px
+        }
+
+        .menu {
+            display: flex;
+            gap: 6px;
+            align-items: center
+        }
+
+            .menu > li {
+                position: relative;
+                list-style: none
+            }
+
+                .menu > li > a {
+                    color: #fff;
+                    padding: 10px 12px;
+                    border-radius: 10px;
+                    display: inline-flex;
+                    gap: 8px;
+                    align-items: center;
+                    font-weight: 700
+                }
+
+                    .menu > li > a:hover {
+                        background: rgba(255,255,255,.06)
+                    }
+
+        .hero {
+            padding: 84px 0 48px;
+            border-bottom: 1px solid var(--border);
+            background: radial-gradient(120% 100% at 0% 0%, rgba(166,25,46,.28), transparent 50%),radial-gradient(120% 100% at 100% 0%, rgba(212,23,54,.18), transparent 50%)
+        }
+
+            .hero h2 {
+                font-size: 44px;
+                line-height: 1.1;
+                margin: 0 0 12px
+            }
+
+            .hero p {
+                color: var(--muted);
+                margin: 0 0 18px
+            }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 18px 0 26px
+        }
+
+        .chip {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--chip);
+            border: 1px solid var(--border);
+            font-size: 13px
+        }
+
+        section {
+            padding: 72px 0;
+            border-bottom: 1px solid var(--border)
+        }
+
+        h3 {
+            font-size: 28px;
+            margin: 0 0 10px
+        }
+
+        .sub {
+            color: var(--muted);
+            margin: 0 0 24px
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 18px
+        }
+
+        .tile {
+            padding: 18px;
+            border-radius: 14px;
+            background: linear-gradient(180deg,#0e0e10,#0b0b0c);
+            border: 1px solid var(--border)
+        }
+
+            .tile h4 {
+                margin: 0 0 8px
+            }
+
+            .tile p {
+                margin: 0;
+                color: var(--muted)
+            }
+
+        .people {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            justify-items: center;
+        }
+
+        .person {
+        background: linear-gradient(180deg, #0e0e10, #0b0b0c);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+        text-align: center;
+        width: 100%;
+        max-width: 260px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+        transition: 0.2s ease;
+        }
+
+     .person:hover {
+      transform: translateY(-3px);  
+    }
+
+    .avatar {
+    display: block;
+    width: 150px;       /* increased from 96px */
+    height: 150px;      /* increased from 96px */
+    margin: 0 auto 12px;
+    border-radius: 50%; /* circle crop */
+    object-fit: cover;  /* ensures faces stay centered */
+    border: 2px solid var(--border);
+    }
+
+    .person .name {
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 4px;
+    }
+
+    .person .role {
+    font-size: 14px;
+    color: var(--muted);
+    }
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-top: 12px;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+        .pub {
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin: 10px 0;
+            background: linear-gradient(180deg,rgba(255,255,255,.01),rgba(255,255,255,0))
+        }
+
+            .pub small {
+                color: var(--muted)
+            }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 20px
+        }
+
+        form {
+            display: grid;
+            gap: 10px
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: #0e0e10;
+            border: 1px solid var(--border);
+            color: var(--text)
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical
+        }
+
+        .btn {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: linear-gradient(180deg,#1a1a1c,#131316);
+            border: 1px solid var(--border);
+            color: var(--text);
+            box-shadow: 0 8px 20px rgba(0,0,0,.25)
+        }
+
+            .btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 10px 28px rgba(0,0,0,.35)
+            }
+
+        footer {
+            padding: 24px 0;
+            color: var(--muted)
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px
+        }
+
+        @media (max-width: 900px) {
+            .grid-3, .grid-2, .contact {
+                grid-template-columns: 1fr
+            }
+
+            .people {
+                grid-template-columns: repeat(2,1fr)
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav" aria-label="primary">
+                <div class="brand">
+                    <div class="logo" aria-hidden="true"></div>
+                    <h1>DiCE Research Lab · SDSU</h1>
+                </div>
+                <ul class="menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#research-areas">Research</a></li>
+                    <li><a href="#projects">Current Projects</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#people">Current Team</a></li>
+                    <li><a href="#software">Software</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home">
+        <section class="hero">
+            <div class="container">
+                <h2>Data‑informed Construction Engineering</h2>
+                <p>We focus on Construction & Civil Engineering with data‑driven, technology‑based solutions focusing on automation, visualization, robotics, and analytics to improve the design, construction, and management of civil infrastructure.</p>
+            </div>
+        </section>
+
+        <section id="research-areas">
+            <div class="container">
+                <h3>Research Areas</h3>
+                <p class="sub">Automation and Robotics  · Data Analytics · Simulation & Digital Twins</p>
+                <div class="grid-3">
+                    <div class="tile"><h4>Automation and Robotics</h4><p>UAVs/drones and robots for sustainability, resiliency, and energy efficiency of the built environment.</p></div>
+                    <div class="tile"><h4>Data Analytics </h4><p>Wearable sensors, MEMS sensors, EMG Biomechanics, machine learning for safety, health, and productivity improvement in construction.</p></div>
+                    <div class="tile"><h4>Simulation & Digital Twins</h4><p>Integrating BIM, sensor data, stochastic simulation to support real‑time decision‑making, and visualization of engineering processes through process mining and Building Information Modeling.</p></div>
+                </div>
+            </div>
+        </section>
+
+ <section id="projects">
+    <div class="container">
+        <h3>Featured Projects</h3>
+        <p class="sub">Current research projects by DiCE Lab</p>
+        <div class="grid-2">
+
+            <!-- Project 1 -->
+            <article class="tile">
+                <h4>Contextual information representation strategies</h4>
+                <p>Formulation of task dependent and closed form representations to fuse contextual information such as natural language or safety constraints with classical methods that guarantee optimality and interpretability.</p>
+                
+                <!-- Embedded YouTube video -->
+                <div class="video-wrapper">
+                    <iframe width="100%" height="315"
+                        src="https://www.youtube.com/embed/GhREKAz4GiE"
+                        title="Contextual Information Representation Strategies Demo"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="tile">
+                <h4>Intelligent robot navigation in dynamic construction sites</h4>
+                <p>Development of adaptive navigation frameworks integrating BIM data, natural language understanding, and multi-heuristic path planning to enable context-aware, obstacle-responsive autonomy for safer and more reliable construction robotics.</p>
+                
+                <!-- Embedded YouTube video -->
+                <div class="video-wrapper">
+                    <iframe width="100%" height="315"
+                        src="https://www.youtube.com/embed/6F2_p_sE9YU"
+                        title="Intelligent Robot Navigation Demo"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+        <section id="publications">
+            <div class="container">
+                <h3>Selected Publications</h3>
+                <ol>
+                    <li class="pub">
+                        S. Ergan, M. Sujon, F. Dai, E. Du, R. Akhavian, and A. Behzadan, “To-Practice Drivers and Barriers: Visualization, Information Modeling, and Simulation Technologies in AEC/FM,” <em>Journal of Computing in Civil Engineering</em>, vol. 40, no. 1, 04025128, 2026.
+                    </li>
+                    <li class="pub">
+                        M. Amani and R. Akhavian, “Safe and trustworthy robot pathfinding with BIM, MHA*, and NLP,” <em>Construction Robotics</em>, vol. 9, no. 2, p. 18, 2025.
+                    </li>
+                    <li class="pub">
+                        R. Akhavian, M. Amani, J. Mootz, R. Ashe, and B. Beheshti, “Building Information Models to Robot-Ready Site Digital Twins (BIM2RDT): An Agentic AI Safety-First Framework,” <em>arXiv preprint</em> arXiv:2509.20705, 2025.
+                    </li>
+                    <li class="pub">
+                        M. Amani and R. Akhavian, “Digital Twin-Guided Robot Path Planning: A Beta-Bernoulli Fusion with Large Language Model as a Sensor,” <em>arXiv preprint</em> arXiv:2509.20709, 2025.
+                    </li>
+                    <li class="pub">
+                        J. Mootz and R. Akhavian, “Advancing Accessible Hand-Arm Vibration Safety Monitoring: ISO-Compliance with Wearable Sensors and Transfer Functions,” <em>arXiv preprint</em> arXiv:2509.16536, 2025.
+                    </li>
+                </ol>
+                <p class="sub">Browse more at <a href="https://scholar.google.com/citations?hl=en&user=EVC47ZUAAAAJ&view_op=list_works&sortby=pubdate">dice.sdsu.edu/publications</a>.</p>
+            </div>
+        </section>
+
+    <section id="people">
+        <div class="container">
+            <h3>Current Team</h3>
+            <div class="people">
+                <div class="person">
+                    <img class="avatar" src="" alt="Portrait of Reza Akhavian" />
+                    <div class="name">Dr Reza Akhavian</div>
+                    <div class="role">Associate Professor at SDSU</div>
+                </div>
+                <div class="person">
+                    <img class="avatar" src="assests/people/Mani_4987.jpg" alt="Portrait of Mani Amani" />
+                    <div class="name">Mani Amani</div>
+                    <div class="role">Ph.D. Student</div>
+                </div>
+                <div class="person">
+                    <img class="avatar" src="assests/people/Johannes_MOOTZ_03_R3400_2.jpg" alt="Portrait of Johannes Mootz" />
+                    <div class="name">Johannes Mootz</div>
+                    <div class="role">Ph.D. Student</div>
+                </div>
+                <div class="person">
+                    <img class="avatar" src="assests/people/RobertAshe.jpg" alt="Portrait of Robert Ashe" />
+                    <div class="name">Robert Ashe</div>
+                    <div class="role">Master's Student</div>
+                </div>
+                <div class="person">
+                    <img class="avatar" src="assests/people/Behrad_25-03-22_21-10-56-508.jpg" alt="Portrait of Behrad Beheshti" />
+                    <div class="name">Behrad Beheshti</div>
+                    <div class="role">Undergraduate Student</div>
+                </div>
+                <div class="person">
+                    <div class="avatar" aria-hidden="true"></div>
+                    <div class="name">Nhan Nguyen</div>
+                    <div class="role">Undergraduate Student</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section id="software">
+            <div class="container">
+                <h3>Software & Resources</h3>
+                <p class="sub">Explore our open-source tools and resources on GitHub.</p>
+                <a class="btn" href="https://github.com/DiceLabs" target="_blank" rel="noopener">View on GitHub →</a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container contact">
+                <div>
+                    <h3>Contact</h3>
+                    <form name="contact" method="post" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <input type="text" name="name" placeholder="Your name" required />
+                        <input type="email" name="email" placeholder="Email" required />
+                        <textarea name="message" placeholder="Message" required></textarea>
+                        <button class="btn" type="submit">Send message</button>
+                    </form>
+                    <p class="sub">Email: <a href="mailto:rakhavian@sdsu.edu">rakhavian@sdsu.edu</a></p>
+                </div>
+                <aside class="tile">
+                    <h4>Lab Address</h4>
+                    <p>5500 Campanile Drive, Education 100K<br />San Diego, CA 92182</p>
+                    <p><strong>Follow</strong><br /><a href="https://dice.sdsu.edu/">DiCE @ SDSU</a></p>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-flex">
+            <div>© <span id="year"></span> DiCE Research Lab — SDSU</div>
+            <div>Built with ❤️ using GitHub Pages</div>
+        </div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
+</html>
