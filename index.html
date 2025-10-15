@@ -73,13 +73,23 @@
             align-items: center
         }
 
-       .logo-img {
-          height: 40px;          /* Adjust as needed */
-          width: auto;           /* Keeps proportions */
-          border-radius: 6px;    /* Optional: soft corners */
-          margin-right: 10px;    /* Space between logo and text */
-          vertical-align: middle;
-        }
+.logo-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.logo-img {
+  height: 60px;          /* increase for larger logo */
+  width: auto;
+  border-radius: 8px;    /* optional rounding */
+  margin-right: 14px;    /* space between logo and text */
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05); /* subtle zoom on hover */
+}
         .brand h1 {
             margin: 0;
             font-size: 18px;
@@ -330,9 +340,11 @@
         <div class="container">
             <nav class="nav" aria-label="primary">
                 <div class="brand">
-                    <img class="logo-img" src="assets/DiceLabLogo.png" alt="DiCE Lab Logo">
-                    <h1>DiCE Research Lab · SDSU</h1>
-                </div>
+          <a href="#home" class="logo-link" aria-label="DiCE Lab Home">
+            <img class="logo-img" src="assets/DiceLabLogo.png" alt="DiCE Lab Logo">
+          </a>
+          <h1>DiCE Research Lab · SDSU</h1>
+            </div>
                 <ul class="menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#research-areas">Research</a></li>
@@ -511,6 +523,7 @@
     <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
 </body>
 </html>
+
 
 
 
