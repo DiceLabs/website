@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DiCE Research Lab — SDSU</title>
     <meta name="description" content="Data-informed Construction Engineering (DiCE) at SDSU. Construction & Civil Engineering research in Robotics, AI, and Data Analytics." />
-    <link rel="icon" type="image/png" href="assets/DiceLabFullLogo.png" />
+    <link rel="icon" type="image/png" href="assets/DiceLabLogo.png" />
     <style>
         /* --- theme variables --- */
         :root {
@@ -333,40 +333,6 @@
                 grid-template-columns: repeat(2,1fr)
             }
         }
-        /* --- Light theme overrides --- */
-            [data-theme="light"] {
-              --ink: #f8fafc;
-              --text: #0b0b0c;
-              --muted: #4b5563;
-              --panel: #ffffff;
-              --border: #e5e7eb;
-              --chip: #f3f4f6;
-              --bg: linear-gradient(180deg, #fafafa, #ffffff 60%, #ffffff);
-        }
-
-        /* Background uses theme variable */
-            body {
-              background: var(--bg);
-            }
-
-        /* Component tweaks for light mode */
-            [data-theme="light"] header {
-              background: rgba(255, 255, 255, 0.9);
-        }
-
-        [data-theme="light"] .tile,
-        [data-theme="light"] .person {
-          background: #ffffff;
-        }
-
-        [data-theme="light"] .btn {
-          background: linear-gradient(180deg, #f9fafb, #f3f4f6);
-          color: var(--text);
-        }
-
-        [data-theme="light"] a {
-          color: var(--red);
-        }
     </style>
 </head>
 <body>
@@ -375,7 +341,7 @@
             <nav class="nav" aria-label="primary">
                 <div class="brand">
           <a href="#home" class="logo-link" aria-label="DiCE Lab Home">
-            <img class="logo-img" src="assets/DiceLabLogo.png" alt="DiCE Lab Logo">
+            <img class="logo-img" src="assets/DiceLabFullLogo.png" alt="DiCE Lab Logo">
           </a>
           <h1>DiCE Research Lab · SDSU</h1>
             </div>
@@ -387,9 +353,6 @@
                     <li><a href="#people">Current Team</a></li>
                     <li><a href="#software">Software</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li>
-                    <button class="btn" id="themeToggle" aria-pressed="false" title="Switch theme">Light mode</button>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -560,6 +523,7 @@
     <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
 </body>
 </html>
+
 
 
 
