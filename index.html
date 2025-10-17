@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DiCE Research Lab — SDSU</title>
     <meta name="description" content="Data-informed Construction Engineering (DiCE) at SDSU. Construction & Civil Engineering research in Robotics, AI, and Data Analytics." />
-    <link rel="icon" type="image/png" href="assets/DiceLabLogo.png" />
+    <link rel="icon" type="image/png" href="assets/DiceLabFullLogo.png" />
     <style>
         /* --- theme variables --- */
         :root {
@@ -73,23 +73,23 @@
             align-items: center
         }
 
-.logo-link {
-  display: inline-block;
-  line-height: 0;
-}
+        .logo-link {
+             display: inline-block;
+             line-height: 0;
+        }
 
-.logo-img {
-  height: 120px;          /* increase for larger logo */
-  width: auto;
-  border-radius: 8px;    /* optional rounding */
-  margin-right: 14px;    /* space between logo and text */
-  vertical-align: middle;
-  transition: transform 0.2s ease;
-}
+        .logo-img {
+            height: 120px;          /* increase for larger logo */
+            width: auto;
+            border-radius: 8px;    /* optional rounding */
+            margin-right: 14px;    /* space between logo and text */
+            vertical-align: middle;
+            transition: transform 0.2s ease;
+        }
 
-.logo-img:hover {
-  transform: scale(1.05); /* subtle zoom on hover */
-}
+            .logo-img:hover {
+            transform: scale(1.05); /* subtle zoom on hover */
+        }
         .brand h1 {
             margin: 0;
             font-size: 18px;
@@ -333,6 +333,40 @@
                 grid-template-columns: repeat(2,1fr)
             }
         }
+        /* --- Light theme overrides --- */
+            [data-theme="light"] {
+              --ink: #f8fafc;
+              --text: #0b0b0c;
+              --muted: #4b5563;
+              --panel: #ffffff;
+              --border: #e5e7eb;
+              --chip: #f3f4f6;
+              --bg: linear-gradient(180deg, #fafafa, #ffffff 60%, #ffffff);
+        }
+
+        /* Background uses theme variable */
+            body {
+              background: var(--bg);
+            }
+
+        /* Component tweaks for light mode */
+            [data-theme="light"] header {
+              background: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .tile,
+        [data-theme="light"] .person {
+          background: #ffffff;
+        }
+
+        [data-theme="light"] .btn {
+          background: linear-gradient(180deg, #f9fafb, #f3f4f6);
+          color: var(--text);
+        }
+
+        [data-theme="light"] a {
+          color: var(--red);
+        }
     </style>
 </head>
 <body>
@@ -353,6 +387,9 @@
                     <li><a href="#people">Current Team</a></li>
                     <li><a href="#software">Software</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li>
+                    <button class="btn" id="themeToggle" aria-pressed="false" title="Switch theme">Light mode</button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -523,6 +560,7 @@
     <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
 </body>
 </html>
+
 
 
 
