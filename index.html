@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DiCE Research Lab — SDSU</title>
     <meta name="description" content="Data-informed Construction Engineering (DiCE) at SDSU. Construction & Civil Engineering research in Robotics, AI, and Data Analytics." />
-    <link rel="icon" type="image/png" href="assets/DiceLabLogo.png" />
+    <link rel="icon" type="image/png" href="assests/DiceLabLogo.png" />
     <style>
         /* --- theme variables --- */
         :root {
@@ -18,6 +18,8 @@
             --panel: #111113;
             --border: #29292B;
             --chip: #161618;
+            
+            --bg: linear-gradient(180deg, var(--ink), #0a0a0b 60%, #09090a);
         }
 
         * {
@@ -31,7 +33,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(180deg,var(--ink),#0a0a0b 60%, #09090a);
+            background: var(--bg);
             color: var(--text);
             font: 16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial
         }
@@ -108,7 +110,7 @@
             }
 
                 .menu > li > a {
-                    color: #fff;
+                    color: var(--text);
                     padding: 10px 12px;
                     border-radius: 10px;
                     display: inline-flex;
@@ -201,6 +203,7 @@
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 24px;
             justify-items: center;
+            align-items: flex-start;
         }
 
         .person {
@@ -213,6 +216,16 @@
         max-width: 260px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
         transition: 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 6px;
+        padding-bottom: 12px;
+        }
+        .person .name {
+            margin: 4px 0 2px;
+            font-weight: 700;
         }
 
          .person:hover {
@@ -221,24 +234,28 @@
 
         .avatar {
             display: block;
-            width: 150px;       /* increased from 96px */
-            height: 150px;      /* increased from 96px */
-            margin: 0 auto 12px;
+            width: 120px;       /* increased from 96px */
+            height: 120px;      /* increased from 96px */
+            margin: 8px auto 12px;
             border-radius: 50%; /* circle crop */
             object-fit: cover;  /* ensures faces stay centered */
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
+            background: none;
+        }
+        img.avatar{
+            display: block;
+            width: 120px;       /* increased from 96px */
+            height: 120px;      /* increased from 96px */
+            margin: 8px auto 12px;
+            border-radius: 50%; /* circle crop */
+            object-fit: cover;  /* ensures faces stay centered */
+            border: 1px solid var(--border);
+            background: none;       
         }
 
-        .person .name {
-            font-weight: 700;
-            font-size: 17px;
-            margin-bottom: 4px;
-        }
+        .person .name {margin: 6px 0 2px; font: 700;}
 
-       .person .role {
-          font-size: 14px;
-          color: var(--muted);
-        }
+       .person .role { margin: 0;}
         .video-wrapper {
           position: relative;
           padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -329,9 +346,82 @@
                 grid-template-columns: 1fr
             }
 
-            .people {
-                grid-template-columns: repeat(2,1fr)
-            }
+            .people { align-items: start;            }
+        }
+        .person-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .person-link * { text-decoration: none;}
+        /* === Light theme overrides === */
+        [data-theme="light"] {
+          --ink: #ffffff;
+          --text: #0b0b0c;
+          --muted: #4b5563;
+          --panel: #ffffff;
+          --border: #e5e7eb;
+          --chip: #f3f4f6;
+         --bg: #ffffff;
+        }
+
+        /* Header goes light */
+        [data-theme="light"] header {
+          background: rgba(255,255,255,0.95);
+          border-bottom: 1px solid var(--border);
+        }
+
+        /* Tiles and people cards */
+        [data-theme="light"] .tile,
+        [data-theme="light"] .person {
+          background: var(--panel);
+          border-color: var(--border);
+          box-shadow: none;
+        }
+
+        /* Inputs readable */
+        [data-theme="light"] input,
+        [data-theme="light"] textarea {
+          background: #ffffff;
+          color: var(--text);
+          border-color: var(--border);
+        }
+
+        /* Buttons readable */
+        [data-theme="light"] .btn {
+          background: linear-gradient(180deg, #f9fafb, #f3f4f6);
+          color: var(--text);
+          border-color: var(--border);
+        }
+
+        /* Links use brand red */
+        [data-theme="light"] a { color: var(--red); }
+
+        /* logo readiablity */
+        [data-theme="light"] .logo-img { box-shadow: 0 0 0 1px var(--border); }
+        /* Compact contact section */
+        #contact {
+          padding: 40px 0;
+          text-align: center;
+        }
+
+        #contact h3 {
+            margin-bottom: 10px;
+        }   
+
+        #contact p {
+          margin: 4px 0;
+        }
+
+        #contact a {
+          color: var(--red-bright);
+          text-decoration: none;
+        }
+
+        #contact a:hover {
+          text-decoration: underline;
         }
     </style>
 </head>
@@ -353,6 +443,7 @@
                     <li><a href="#people">Current Team</a></li>
                     <li><a href="#software">Software</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><button class="btn" id="themeToggle" aria-pressed="false" title="Switch theme">Light mode</button></li>
                 </ul>
             </nav>
         </div>
@@ -453,9 +544,11 @@
             <h3>Current Team</h3>
             <div class="people">
                 <div class="person">
-                    <img class="avatar" src="assets/people/Reza.jpg" alt="Portrait of Reza Akhavian" />
-                    <div class="name">Dr Reza Akhavian</div>
-                    <div class="role">Associate Professor at SDSU</div>
+                  <a href="reza-akhavian.html" class="person-link">
+                    <img class="avatar" src="assets/people/Reza.jpg" alt="Portrait of Dr. Reza Akhavian" />
+                    <div class="name">Dr. Reza Akhavian</div>
+                <div class="role">Associate Professor at SDSU</div>
+                </a>
                 </div>
                 <div class="person">
                     <img class="avatar" src="assets/people/Mani_4987.jpg" alt="Portrait of Mani Amani" />
@@ -495,23 +588,19 @@
         </section>
 
         <section id="contact">
-            <div class="container contact">
-                <div>
-                    <h3>Contact</h3>
-                    <form name="contact" method="post" data-netlify="true">
-                        <input type="hidden" name="form-name" value="contact" />
-                        <input type="text" name="name" placeholder="Your name" required />
-                        <input type="email" name="email" placeholder="Email" required />
-                        <textarea name="message" placeholder="Message" required></textarea>
-                        <button class="btn" type="submit">Send message</button>
-                    </form>
-                    <p class="sub">Email: <a href="mailto:rakhavian@sdsu.edu">rakhavian@sdsu.edu</a></p>
-                </div>
-                <aside class="tile">
-                    <h4>Lab Address</h4>
-                    <p>5500 Campanile Drive, Education 100K<br />San Diego, CA 92182</p>
-                </aside>
+          <div class="container contact">
+            <div class="contact-info tile" style="margin: 0 auto; max-width: 500px; text-align: center;">
+              <h3>Contact</h3>
+          <p class="sub" style="margin-bottom: 8px;">
+                Email: <a href="mailto:rakhavian@sdsu.edu">rakhavian@sdsu.edu</a>
+          </p>
+              <p style="margin: 0;">
+                5500 Campanile Drive, Education 100D<br>
+                San Diego, CA 92182<br>
+                <a href="https://dice.sdsu.edu/">DiCE @ SDSU</a>
+          </p>
             </div>
+          </div>
         </section>
     </main>
 
@@ -521,5 +610,32 @@
         </div>
     </footer>
     <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+<script>   (function(){
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    function apply(theme){
+      if(theme === 'light'){
+        root.setAttribute('data-theme','light');
+        if (toggle){ toggle.textContent='Dark mode'; toggle.setAttribute('aria-pressed','true'); }
+      } else {
+        root.removeAttribute('data-theme');
+        if (toggle){ toggle.textContent='Light mode'; toggle.setAttribute('aria-pressed','false'); }
+      }
+      localStorage.setItem('theme', theme === 'light' ? 'light' : 'dark');
+    }
+
+    apply(stored || (prefersLight ? 'light' : 'dark'));
+
+    if (toggle){
+      toggle.addEventListener('click', ()=>{
+        const isLight = root.getAttribute('data-theme') === 'light';
+        apply(isLight ? 'dark' : 'light');
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
