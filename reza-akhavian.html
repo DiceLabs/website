@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr. Reza Akhavian — DiCE Research Lab · SDSU</title>
+  <link rel="icon" type="image/png" href="assets/DiceLabLogo.png" />
+  <style>
+    :root {
+      --red: #A6192E;
+      --red-bright: #D41736;
+      --black: #000000;
+      --ink: #0B0B0C;
+      --muted: #B8BDC5;
+      --text: #F3F4F6;
+      --panel: #111113;
+      --border: #29292B;
+      --chip: #161618;
+      --bg: linear-gradient(180deg, var(--ink), #0a0a0b 60%, #09090a);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial;
+      color:var(--text);
+      background:var(--bg);
+    }
+    a{color:var(--red-bright);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    header{
+      position:sticky;top:0;z-index:10;
+      background:rgba(0,0,0,.82);
+      backdrop-filter:saturate(150%) blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .container{max-width:1000px;margin:0 auto;padding:0 20px}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+    .menu{display:flex;gap:10px;list-style:none;margin:0;padding:0}
+    .menu a{color:var(--text);font-weight:600;padding:6px 10px;border-radius:8px}
+    .menu a:hover{background:rgba(255,255,255,.06)}
+
+    .bio{
+      padding:60px 0;
+    }
+    .bio h1{font-size:32px;margin-bottom:10px;color:var(--red-bright)}
+    .bio h2{font-size:20px;margin:0 0 20px;color:var(--muted)}
+    .bio p{margin-bottom:16px;color:var(--text)}
+    .affiliations h3{margin-top:30px;font-size:22px;color:var(--red-bright)}
+    ul.aff{list-style:disc;padding-left:20px;color:var(--text)}
+    footer{padding:24px 0;color:var(--muted);border-top:1px solid var(--border);margin-top:40px}
+    .footer-flex{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+    /* Light theme overrides */
+    [data-theme="light"] {
+      --ink:#ffffff;
+      --text:#0b0b0c;
+      --muted:#4b5563;
+      --panel:#ffffff;
+      --border:#e5e7eb;
+      --chip:#f3f4f6;
+      --bg:#ffffff;
+    }
+    [data-theme="light"] header{
+      background:rgba(255,255,255,0.95);
+      border-bottom:1px solid var(--border);
+    }
+    [data-theme="light"] body{background:var(--bg)}
+    [data-theme="light"] a{color:var(--red)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <a href="index.html" class="logo-link" aria-label="DiCE Lab Home">
+          <img class="logo-img" src="assests/DiceLabFullLogo.png" alt="DiCE Lab Full Logo" style="height:50px;width:auto;margin-right:12px;vertical-align:middle">
+        </a>
+        <strong>DiCE Research Lab · SDSU</strong>
+      </div>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#people">People</a></li>
+        <li><a href="index.html#research-areas">Research</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><button class="btn" id="themeToggle" aria-pressed="false">Light mode</button></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="container bio">
+    <h1>Dr. Reza Akhavian</h1>
+    <h2>Jim Ryan Endowed Chair in Construction Engineering and Management  
+      <br>Associate Professor, Department of Civil, Construction, and Environmental Engineering · SDSU
+    </h2>
+    <p>Dr. Reza Akhavian is the Jim Ryan Endowed Chair in Construction Engineering and Management and an Associate Professor in the Department of Civil, Construction, and Environmental Engineering at San Diego State University (SDSU). He directs the “Smart Construction, Infrastructure, and Buildings through Education, Research, and Cutting-edge Technology” (SCIBER-CT) NSF Research Traineeship (NRT) program and the Data-informed Construction Engineering (DiCE) Lab at SDSU.</p>
+    <p>His research advances human-centered construction automation through artificial intelligence, collaborative robotics, BIM and digital-twin integration, and wearable and vision sensing for safety, productivity, and trust in human-robot teams. He has authored over 60 peer-reviewed papers and served as PI/Co-PI on multi-million-dollar projects supported by NSF, Caltrans, DOT, and other sponsors.</p>
+    <p>Dr. Akhavian is Assistant Specialty Editor for the ASCE Journal of Construction Engineering and Management and serves on the Editorial Board of Elsevier’s Advanced Engineering Informatics. His honors include the NSF CAREER Award, AGC Outstanding Educator Meritorious Award, ASCE Construction Institute Outstanding Young Professional, and ENR California Top 20 Under 40. Before joining SDSU, he was Assistant Professor at California State University East Bay.</p>
+
+    <div class="affiliations">
+      <h3>Affiliations</h3>
+      <ul class="aff">
+        <li>Department of Civil, Construction, and Environmental Engineering</li>
+        <li>Big Data Analytics Program</li>
+        <li>Computational Science Research Center</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-flex">
+      <div>© <span id="year"></span> DiCE Research Lab — SDSU</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function(){
+      const root = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const stored = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+      function apply(theme){
+        if(theme==='light'){
+          root.setAttribute('data-theme','light');
+          toggle.textContent='Dark mode';
+          toggle.setAttribute('aria-pressed','true');
+        } else {
+          root.removeAttribute('data-theme');
+          toggle.textContent='Light mode';
+          toggle.setAttribute('aria-pressed','false');
+        }
+        localStorage.setItem('theme', theme==='light' ? 'light':'dark');
+      }
+      apply(stored || (prefersLight ? 'light':'dark'));
+      toggle.addEventListener('click', ()=>{
+        const isLight = root.getAttribute('data-theme')==='light';
+        apply(isLight ? 'dark':'light');
+      });
+    })();
+  </script>
+</body>
+</html>
